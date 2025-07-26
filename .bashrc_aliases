@@ -1,0 +1,4 @@
+alias scan='clamdscan --fdpass --multiscan --stream --no-summary'
+alias tf=terraform
+alias gitignore='git update-index --assume-unchanged'
+alias gitunignore='git update-index --no-assume-unchanged'
