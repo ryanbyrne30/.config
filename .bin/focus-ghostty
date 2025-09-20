@@ -1,0 +1,8 @@
+#!/bin/bash
+# Find Brave window with Grok tab by title
+WINDOW=$(wmctrl -lx | grep "ghostty.com.mitchellh.ghostty" | awk '{print $1}' | head -n 1)
+if [ -n "$WINDOW" ]; then
+	wmctrl -i -a "$WINDOW"
+else
+	ghostty &
+fi

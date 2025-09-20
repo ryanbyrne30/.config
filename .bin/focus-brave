@@ -1,0 +1,15 @@
+#!/bin/bash
+# Find Brave windows, exclude those with Grok or Claude
+# WINDOW=$(wmctrl -lx | grep "brave-browser.Brave-browser" | grep -v -E "Grok|Claude" | awk '{print $1}' | head -n 1)
+WINDOW=$(wmctrl -lx | grep "brave-browser.Brave-browser" | awk '{print $1}' | head -n 1)
+if [ -n "$WINDOW" ]; then
+  wmctrl -i -a "$WINDOW"
+  # Focus address bar (Ctrl+L in Brave)
+  xdotool windowactivate "$WINDOW"
+  xdotool key ctrl+l
+else
+  # Open new Brave window if none found
+  brave-browser --new-window &
+  sleep 1
+  xdotool key ctrl+l
+fi
